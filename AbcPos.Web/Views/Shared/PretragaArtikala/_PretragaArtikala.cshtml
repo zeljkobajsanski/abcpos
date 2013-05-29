@@ -1,0 +1,73 @@
+﻿@using AbcPos.Web.ViewModels
+@model AbcPos.Web.ViewModels.PretragaArtikalaViewModel
+<style>
+    #pretragaArtikalaGrid {
+        width: 100%;
+        clear: both;
+    }
+    #gvPretragaArtikala {
+        margin: 4px;
+    }
+    #commands {
+        margin: 4px;
+    }
+</style>
+
+<div id="pretragaArtikala">
+    <div id="kriterijumiPretrageArtikala">
+        @using (Html.BeginForm("", "", FormMethod.Get, new {id = "pretragaArtikalaForm"}))
+        {
+            @Html.DevExpress().TextBox(
+                tb =>
+                    {
+                        tb.Name = "pretragaArtikala_tbSifraArtikla";
+                        tb.ControlStyle.CssClass = "editor";
+                        tb.Properties.NullText = "šifra/barkod artikla";
+                    }
+            ).GetHtml()
+            @Html.DevExpress().TextBox(
+                tb =>
+                    {
+                        tb.Name = "pretragaArtikala_tbNazivArtikla";
+                        tb.ControlStyle.CssClass = "editor";
+                        tb.Properties.NullText = "...deo naziva artikla...";
+                    }
+            ).GetHtml()
+            <div>
+                @Html.DevExpress().Button(
+                    button =>
+                        {
+                            button.Name = "btnPretraziArtikle";
+                            button.Text = "Pretraži";
+                            button.UseSubmitBehavior = true;
+                            button.ControlStyle.CssClass = "floatLeft button";
+                        }
+                     ).GetHtml()
+            @Html.DevExpress().Button(
+                button =>
+                    {
+                        button.Name = "btnPonistiKriterijume";
+                        button.Text = "Poništi";
+                        button.ClientSideEvents.Click = "app.pretragaArtikala.ponistiKriterijume";
+                        button.ControlStyle.CssClass = "floatLeft button";
+                    }
+                 ).GetHtml()
+            </div>
+            
+        }
+        
+    </div>
+    <div id="pretragaArtikalaGrid">
+        @Html.Partial("PretragaArtikala/_PretragaArtikalaGrid", Model)  
+    </div>
+    <div id="commands">
+        @Html.DevExpress().Button(
+            button =>
+                {
+                    button.Name = "btnIzaberiArtikle";
+                    button.Text = "Izaberi";
+                    button.ClientSideEvents.Click = "app.pretragaArtikala.izaberiArtikle";
+                }
+        ).GetHtml()
+    </div>
+</div>

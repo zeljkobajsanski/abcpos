@@ -1,0 +1,46 @@
+﻿@using AbcPos.Web.Settings
+@model AbcPos.Web.ViewModels.NabavkaViewModel
+
+<div id="zaglavlje">
+    @using (Ajax.BeginForm("SacuvajZaglavlje", new AjaxOptions()
+    {
+        OnSuccess = "app.nabavka.sacuvanoZaglavlje"
+    }))
+    {
+        @Html.HiddenFor(x => x.Dokument.ID, new{@class = "idDokumenta"})
+        @Html.HiddenFor(x => x.Dokument.UID)
+        @Html.DevExpress().DateEdit(
+            date =>
+            {
+                date.Name = "Dokument.Datum";
+                date.ControlStyle.CssClass = "editor";
+                date.ShowModelErrors = true;
+            }
+        ).Bind(Model.Dokument.Datum).GetHtml()
+        @Html.DevExpress().TextBox(
+            txt =>
+            {
+                txt.Name = "Dokument.Oznaka";
+                txt.ControlStyle.CssClass = "editor";
+                txt.Properties.NullText = "Oznaka dokumenta";
+            }
+        ).Bind(Model.Dokument.Oznaka).GetHtml()
+        @Html.DevExpress().ComboBox(
+            new RadnjaComboBoxSettings("Dokument.RadnjaID")
+        ).BindList(Model.Radnje).Bind(Model.Dokument.RadnjaID).GetHtml()
+
+        @Html.DevExpress().ComboBox(
+            new KomitentComboBox("Dokument.KomitentID")
+        ).BindList(Model.FiltrirajDobavljace, Model.VratiDobavljaca).Bind(Model.Dokument.KomitentID).GetHtml()
+
+        @Html.DevExpress().Button(
+            button =>
+            {
+                button.Name = "btnSacuvajZaglavlje";
+                button.Text = "Sačuvaj";
+                button.UseSubmitBehavior = true;
+                button.ControlStyle.CssClass = "button";
+            }
+        ).GetHtml()
+    }
+</div>

@@ -1,0 +1,10 @@
+﻿#artikli {
+    width: 700px;
+    float: left;
+}
+
+#zalihe {
+    float: left;
+    width: 260px;
+    margin: 0 0 0 4px;
+}

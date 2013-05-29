@@ -1,0 +1,15 @@
+﻿@model AbcPos.Web.ViewModels.ZaliheViewModel
+<div class="line">
+    @Html.DevExpress().Button(
+        btn =>
+        {
+            btn.Name = "btnOsveziDijagram";
+            btn.Text = "Osveži dijagram";
+            btn.ClientSideEvents.Click = "app.zalihe.osveziDijagram";
+            btn.ControlStyle.CssClass = "buttonPretrazi";
+        }
+    ).GetHtml()
+</div>
+<div id="chart">
+    @Html.Partial("_Chart", Model.Zalihe)
+</div>

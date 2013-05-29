@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{60D7FF6C-0BDF-4283-9B90-93CC4ACA02D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AbcPos.Core</RootNamespace>
+    <AssemblyName>AbcPos.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Akord.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\ILocalRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Kriterijumi\KriterijumPretrageDokumenata.cs" />
+    <Compile Include="Models\Artikal.cs" />
+    <Compile Include="Models\Dobavljac.cs" />
+    <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Komitent.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\JedinicaMere.cs" />
+    <Compile Include="Models\KonfiguracijaKase.cs" />
+    <Compile Include="Models\Notifiable.cs" />
+    <Compile Include="Models\Pdv.cs" />
+    <Compile Include="Models\Racun.cs" />
+    <Compile Include="Models\Radnja.cs" />
+    <Compile Include="Models\Sinhronizacija.cs" />
+    <Compile Include="Models\StavkaDokumenta.cs" />
+    <Compile Include="Models\StavkaRacuna.cs" />
+    <Compile Include="Models\TipDokumenta.cs" />
+    <Compile Include="Models\Zaliha.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DbInit.cs" />
+    <Compile Include="Repository\LocalDataContext.cs" />
+    <Compile Include="Repository\LocalDbInit.cs" />
+    <Compile Include="Repository\LocalRepository.cs" />
+    <Compile Include="Repository\Repository.Dokumenti.cs" />
+    <Compile Include="Repository\Repository.Komitenti.cs" />
+    <Compile Include="Repository\Repository.Zalihe.cs" />
+    <Compile Include="Repository\DataContext.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Utils\CreateDatabase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Akord.pfx" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <Compile Include="Repository\Repository.Artikli.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

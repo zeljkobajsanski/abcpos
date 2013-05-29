@@ -1,0 +1,114 @@
+﻿@using System.Web.UI.WebControls
+@using AbcPos.Web.Settings
+@using LabelSettings = AbcPos.Web.Settings.LabelSettings
+@model AbcPos.Web.ViewModels.NabavkaViewModel
+
+<div id="stavka">
+    @using (Ajax.BeginForm("SacuvajStavku", null, new AjaxOptions()
+                                                    {
+                                                        OnSuccess = "app.nabavka.osveziStavke();app.nabavka.novaStavka()"
+                                                    }, new{id="stavkaForm"}))
+    {
+        @Html.DevExpress().Button(
+            btn =>
+            {
+                btn.Name = "btnNovaStavka";
+                btn.Text = "Nova stavka";
+                btn.ClientSideEvents.Click = "app.nabavka.novaStavka";
+                btn.ControlStyle.CssClass = "button";
+            }
+        ).GetHtml()
+        @Html.HiddenFor(x => x.StavkaDokumenta.DokumentID, new{@class = "idDokumenta"})
+        @Html.HiddenFor(x => x.StavkaDokumenta.ID)
+        
+        <div class="line">
+             @Html.DevExpress().Label(new LabelSettings("Artikal", "tbSifraArtikla")).GetHtml()
+            @Html.DevExpress().ButtonEdit(new PretragaArtikalaButtonEditSettings(@Url)).GetHtml()
+        </div>
+        
+
+        @Html.HiddenFor(x => x.StavkaDokumenta.ArtikalID, new{@class = "idArtikla"})
+        
+        <p id="nazivArtikla"></p>
+        
+        <div class="line">
+            @Html.DevExpress().Label(new LabelSettings("Količina", "StavkaDokumenta.Kolicina")).GetHtml()
+            @Html.DevExpress().SpinEdit(
+                spin =>
+                {
+                    spin.Name = "StavkaDokumenta.Kolicina";
+                    spin.Properties.ClientInstanceName = "kolicina";
+                    spin.ControlStyle.CssClass = "editor";
+                    spin.ShowModelErrors = true;
+                    spin.Properties.AllowMouseWheel = false;
+                    spin.Properties.DecimalPlaces = 4;
+                    spin.Properties.DisplayFormatString = "n4";
+                    spin.ControlStyle.HorizontalAlign = HorizontalAlign.Right;
+                    spin.Properties.ClientSideEvents.KeyPress = "function(s, e) { if (e.htmlEvent.keyCode === 13) nabavnaCena.Focus();}";
+                }
+            ).Bind(Model.StavkaDokumenta.Kolicina).GetHtml()
+
+        </div>
+        
+        <div class="line">
+            @Html.DevExpress().Label(new LabelSettings("Nabavna cena", "StavkaDokumenta.NabavnaCena")).GetHtml()
+            @Html.DevExpress().SpinEdit(
+            spin =>
+            {
+                spin.Name = "StavkaDokumenta.NabavnaCena";
+                spin.Properties.ClientInstanceName = "nabavnaCena";
+                spin.ControlStyle.CssClass = "editor";
+                spin.ShowModelErrors = true;
+                spin.Properties.AllowMouseWheel = false;
+                spin.Properties.DecimalPlaces = 2;
+                spin.Properties.DisplayFormatString = "n2";
+                spin.ControlStyle.HorizontalAlign = HorizontalAlign.Right;
+                spin.Properties.ClientSideEvents.KeyPress = "function(s, e) { if (e.htmlEvent.keyCode === 13) prodajnaCena.Focus();}";
+            }
+        ).Bind(Model.StavkaDokumenta.NabavnaCena).GetHtml()
+        </div>
+        <div class="line">
+            @Html.DevExpress().Label(new LabelSettings("Marža", "marza")).GetHtml()
+            @Html.DevExpress().SpinEdit(
+                spin =>
+                {
+                    spin.Name = "marza";
+                    spin.ControlStyle.CssClass = "editor";
+                    spin.ShowModelErrors = true;
+                    spin.Properties.AllowMouseWheel = false;
+                    spin.Properties.DecimalPlaces = 2;
+                    spin.Properties.DisplayFormatString = "n2";
+                    spin.ControlStyle.HorizontalAlign = HorizontalAlign.Right;
+                    spin.Properties.ClientSideEvents.KeyPress = "function(s, e) { if (e.htmlEvent.keyCode === 13) prodajnaCena.Focus();}";
+                }
+                 ).Bind(Model.Marza).GetHtml()
+        </div>
+        <div class="line">
+            @Html.DevExpress().Label(new LabelSettings("Prodajna cena", "StavkaDokumenta.ProdajnaCena")).GetHtml()
+            @Html.DevExpress().SpinEdit(
+                spin =>
+                {
+                    spin.Name = "StavkaDokumenta.ProdajnaCena";
+                    spin.Properties.ClientInstanceName = "prodajnaCena";
+                    spin.ControlStyle.CssClass = "editor";
+                    spin.ShowModelErrors = true;
+                    spin.Properties.AllowMouseWheel = false;
+                    spin.Properties.DecimalPlaces = 2;
+                    spin.Properties.DisplayFormatString = "n2";
+                    spin.ControlStyle.HorizontalAlign = HorizontalAlign.Right;
+                    spin.Properties.ClientSideEvents.KeyPress = "function(s, e) { if (e.htmlEvent.keyCode === 13) btnSacuvajStavku.Focus();}";
+                }
+                 ).Bind(Model.StavkaDokumenta.ProdajnaCena).GetHtml()
+        </div>
+        
+        @Html.DevExpress().Button(
+            button =>
+            {
+                button.Name = "btnSacuvajStavku";
+                button.Text = "Sačuvaj";
+                button.ClientSideEvents.Click = "app.nabavka.sacuvajStavku";
+                button.ControlStyle.CssClass = "button";
+            }
+        ).GetHtml()
+    }
+</div>

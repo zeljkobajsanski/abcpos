@@ -1,0 +1,13 @@
+﻿body {
+}
+
+#dokumentiGrid {
+    width: 600px;
+    float: left;
+}
+
+#stavkeRacuna {
+     margin: 0 4px;
+     width: 400px;
+     float: left;   
+}

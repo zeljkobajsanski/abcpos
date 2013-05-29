@@ -1,0 +1,55 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.Data
+@model AbcPos.Web.ViewModels.PregledDokumenataViewModel
+
+@Html.DevExpress().GridView(
+    grid =>
+    {
+        grid.Name = "gvDokumenti";
+        grid.CallbackRouteValues = new {action = "Index"};
+        grid.Width = Unit.Percentage(100);
+        
+        // columns
+        
+        grid.Columns.Add("Datum").Width = Unit.Pixel(120);
+        grid.Columns.Add("Oznaka");
+        grid.Columns.Add("Radnja.Naziv", "Prodavnica");
+        grid.Columns.Add("Gotovina", "Gotovina").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add("Kartica", "Kartica").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add("Cek", "Ček").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add("UkupnaUplata", "Ukupno").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add(c =>
+        {
+            c.Caption = "Detalji";
+            c.SetDataItemTemplateContent(tc =>
+            {
+                var id = DataBinder.Eval(tc.DataItem, "Id");
+                @Html.DevExpress().HyperLink(
+                    lnk =>
+                    {
+                        lnk.Name = "Stavka_" + id;
+                        lnk.CustomJSProperties = (sender, args) => args.Properties.Add("cpIdDokumenta", id);
+                        lnk.Properties.ImageUrl = @Url.Content("~/Content/images/edit.png");
+                        lnk.ControlStyle.Cursor = "pointer";
+                        lnk.Properties.ClientSideEvents.Click = "app.dokumenti.prikaziStavkeRacuna";
+                    }).Render();
+            });
+        });
+        
+        // total
+        grid.TotalSummary.Add(SummaryItemType.Sum, "Gotovina").DisplayFormat = "n2";
+        grid.TotalSummary.Add(SummaryItemType.Sum, "Kartica").DisplayFormat = "n2";
+        grid.TotalSummary.Add(SummaryItemType.Sum, "Cek").DisplayFormat = "n2";
+        grid.TotalSummary.Add(SummaryItemType.Sum, "UkupnaUplata").DisplayFormat = "n2";
+        grid.Settings.ShowFooter = true;
+        // events
+        grid.ClientSideEvents.BeginCallback = "app.dokumenti.gvDokumentiBeginCallback";
+
+        // loader
+        grid.SettingsLoadingPanel.Enabled = true;
+        grid.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.ShowOnStatusBar;
+        
+        // status
+        grid.Settings.ShowStatusBar = GridViewStatusBarMode.Auto;
+    }
+).Bind(Model.Racuni).GetHtml()

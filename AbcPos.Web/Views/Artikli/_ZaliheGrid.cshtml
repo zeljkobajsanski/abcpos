@@ -1,0 +1,35 @@
+﻿@using System.Web.UI.WebControls
+@using AbcPos.Web.Settings
+@model AbcPos.Web.ViewModels.ZaliheArtiklaViewModel
+
+@Html.DevExpress().GridView(
+    grid =>
+    {
+        grid.Name = "gvZalihe";
+        grid.CallbackRouteValues = new {action = "VratiZalihe"};
+        grid.Width = Unit.Percentage(100);
+        grid.KeyFieldName = "ID";
+        
+        // editing
+        //grid.SettingsEditing.Mode = GridViewEditingMode.Inline;
+        grid.SettingsEditing.ShowModelErrorsForEditors = true;
+        //grid.SettingsEditing.UpdateRowRouteValues = new {action = "SacuvajZalihu", idArtikla = Model.IdArtikla};
+        
+        // columns
+        grid.Columns.Add(c =>
+        {
+            c.FieldName = "RadnjaID";
+            c.Caption = "Radnja";
+            c.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var editor = (ComboBoxProperties) c.PropertiesEdit;
+            editor.TextField = "Naziv";
+            editor.ValueType = typeof (int);
+            editor.ValueField = "ID";
+            editor.DataSource = Model.Radnje;
+        });
+        grid.Columns.Add("TrenutnaZaliha", "Zaliha").Width = Unit.Pixel(80);
+        
+        // events
+        grid.ClientSideEvents.BeginCallback = "app.artikli.gvZaliheBeginCallback";
+    }
+).Bind(Model.Zalihe).GetHtml()

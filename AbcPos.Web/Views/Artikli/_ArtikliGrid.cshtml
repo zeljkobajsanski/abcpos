@@ -1,0 +1,102 @@
+﻿@using System.Web.UI.WebControls
+@using AbcPos.Web.Settings
+@model AbcPos.Web.ViewModels.ArtikliViewModel
+
+@{
+    @Html.DevExpress().GridView(
+        grid =>
+        {
+            grid.Name = "gvArtikli";
+            grid.KeyFieldName = "ID";
+            grid.CallbackRouteValues = new {action = "Index"};
+            grid.SettingsEditing.UpdateRowRouteValues = new {action = "SacuvajArtikal"};
+            grid.SettingsEditing.AddNewRowRouteValues = new {action = "SacuvajArtikal"};
+            grid.Width = Unit.Percentage(100);
+            grid.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+            grid.SettingsEditing.EditFormColumnCount = 1;
+            grid.SettingsEditing.ShowModelErrorsForEditors = true;
+            grid.SettingsBehavior.AllowFocusedRow = true;
+            grid.Settings.ShowFilterRow = true;
+            grid.SettingsPager.PageSize = 15;
+            
+            // columns
+            grid.Columns.Add("Sifra", "Šifra").Width = Unit.Pixel(50);
+            grid.Columns.Add("Naziv", "Naziv").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+            grid.Columns.Add(c =>
+            {
+                c.FieldName = "JedinicaMereID";
+                c.Caption = "JM";
+                c.Width = Unit.Pixel(80);
+                c.ColumnType = MVCxGridViewColumnType.ComboBox;
+                var editor = (ComboBoxProperties) c.PropertiesEdit;
+                editor.TextField = "Oznaka";
+                editor.ValueField = "ID";
+                editor.ValueType = typeof (int);
+                editor.DataSource = Model.JediniceMere;
+            });
+            grid.Columns.Add(c =>
+            {
+                c.FieldName = "PdvID";
+                c.Caption = "PDV";
+                c.ColumnType = MVCxGridViewColumnType.ComboBox;
+                var editor = (ComboBoxProperties) c.PropertiesEdit;
+                editor.TextField = "Naziv";
+                editor.ValueType = typeof (int);
+                editor.ValueField = "ID";
+                editor.DataSource = Model.Pdv;
+                c.Width = Unit.Pixel(80);
+            });
+            grid.Columns.Add("Barkod");
+
+            // edit form
+            grid.SettingsPopup.EditForm.HorizontalAlign = PopupHorizontalAlign.LeftSides;
+            grid.SettingsPopup.EditForm.VerticalAlign = PopupVerticalAlign.Below;
+            grid.SettingsPopup.EditForm.Width = Unit.Pixel(400);
+            grid.SettingsPopup.EditForm.Modal = true;
+
+            // commands
+            grid.CommandColumn.Visible = true;
+            grid.CommandColumn.Width = Unit.Pixel(80);
+            grid.CommandColumn.ButtonType = ButtonType.Image;
+
+            // edit button
+            GridSettings.EditButtton(grid, @Url);
+
+            // update button
+            GridSettings.UpdateButton(grid, @Url);
+
+            // cancel button
+            GridSettings.CancelButton(grid, @Url);
+
+            // new button
+            grid.CommandColumn.SetHeaderTemplateContent(tc =>
+            {
+                Html.DevExpress().Button(
+                    btn =>
+                    {
+                        btn.Name = "btnNew";
+                        btn.Text = "Novi";
+                        btn.Images.Image.Url = @Url.Content("~/Content/images/new_24.png");
+                        btn.ClientSideEvents.Click = "function(){gvArtikli.AddNewRow()}";
+                    }
+                    ).Render();
+            });
+            
+            
+            //events
+            grid.ClientSideEvents.FocusedRowChanged = "app.artikli.gvArtikliFocusedRowChanged";
+            grid.InitNewRow += (s, e) =>
+            {
+                e.NewValues.Add("Sifra", Model.PrototipArtikla.Sifra);
+                e.NewValues.Add("JedinicaMereID", Model.PrototipArtikla.JedinicaMereID);
+                e.NewValues.Add("PdvID", Model.PrototipArtikla.PdvID);
+            };
+
+        }).Bind(Model.Artikli).GetHtml();
+        @*@{
+             if (Model.Greska != null)
+             {
+                 gv.SetEditErrorText(Model.Greska);
+             }
+        }*@
+}

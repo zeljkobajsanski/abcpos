@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{106EE1DE-9A2F-43DB-A7B6-E9CDB67CBAD8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AbcPos.Kasa</RootNamespace>
+    <AssemblyName>AbcPos.Kasa</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>E:\Projekti\MojiProjekti\AbcPos\AbcPos.Kasa\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://abcpos.azurewebsites.net/desktop/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>25</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A77B13CEF63D875B791224C504A7989D71E9AA20</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Akord.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v12.2.Win, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.4.3.6\lib\net40\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Kasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kasa.Designer.cs">
+      <DependentUpon>Kasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NacinPlacanja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NacinPlacanja.Designer.cs">
+      <DependentUpon>NacinPlacanja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Podesavanja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Podesavanja.Designer.cs">
+      <DependentUpon>Podesavanja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PregledProdaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PregledProdaje.Designer.cs">
+      <DependentUpon>PregledProdaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PretragaArtikala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PretragaArtikala.Designer.cs">
+      <DependentUpon>PretragaArtikala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Racun.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Racun.Designer.cs">
+      <DependentUpon>Racun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Shell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Shell.Designer.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sinhronizacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sinhronizacija.Designer.cs">
+      <DependentUpon>Sinhronizacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IoC.cs" />
+    <Compile Include="LocalDatabasePath.cs" />
+    <Compile Include="Models\SyncResult.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\SyncService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ISyncService.cs" />
+    <Compile Include="Services\SyncService.cs" />
+    <Compile Include="ViewModels\NacinPlacanjaViewModel.cs" />
+    <Compile Include="ViewModels\PregledProdajeViewModel.cs" />
+    <Compile Include="ViewModels\PretragaArtikalaViewModel.cs" />
+    <Compile Include="ViewModels\RacunViewModel.cs" />
+    <EmbeddedResource Include="Forms\Kasa.resx">
+      <DependentUpon>Kasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NacinPlacanja.resx">
+      <DependentUpon>NacinPlacanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Podesavanja.resx">
+      <DependentUpon>Podesavanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PregledProdaje.resx">
+      <DependentUpon>PregledProdaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PretragaArtikala.resx">
+      <DependentUpon>PretragaArtikala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Racun.resx">
+      <DependentUpon>Racun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shell.resx">
+      <DependentUpon>Shell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sinhronizacija.resx">
+      <DependentUpon>Sinhronizacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Akord.pfx" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.Artikal.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.JedinicaMere.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.KonfiguracijaKase.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.Pdv.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.Racun.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.Radnja.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Core.Models.Zaliha.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.Forms.Racun.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.Models.Racun.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.Models.StanjeSinhronizacije.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.Models.StavkaRacuna.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.ViewModels.NacinPlacanjaViewModel.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.ViewModels.PregledProdajeViewModel.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.ViewModels.PretragaArtikalaViewModel.datasource" />
+    <None Include="Properties\DataSources\AbcPos.Kasa.ViewModels.RacunViewModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\SyncService\SyncService.wsdl" />
+    <None Include="Service References\SyncService\SyncService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SyncService\SyncService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SyncService\SyncService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AbcPos.Core\AbcPos.Core.csproj">
+      <Project>{60d7ff6c-0bdf-4283-9b90-93cc4aca02d7}</Project>
+      <Name>AbcPos.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SyncService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SyncService\SyncService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SyncService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SyncService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SyncService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business_man_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business_man_blue %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\system-search-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_new_raised.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gnome_document_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash_register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pie_chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media_playback_start %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config_tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\NLog.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

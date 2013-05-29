@@ -1,0 +1,20 @@
+﻿@using System.Web.UI.WebControls
+@model AbcPos.Web.ViewModels.PretragaArtikalaViewModel
+
+@Html.DevExpress().GridView(
+    grid =>
+        {
+            grid.Name = "gvPretragaArtikala";
+            grid.CallbackRouteValues = new {controller = "Artikli", action = "PretraziArtikle"};
+            grid.ClientSideEvents.BeginCallback = "app.pretragaArtikala.gvPretragaArtikalaBeginCallback";
+            grid.KeyFieldName = "ID";
+            grid.Columns.Add("Sifra", "Šifra");
+            grid.Columns.Add("Naziv", "Naziv artikla");
+            grid.Width = Unit.Percentage(100);
+
+            grid.SettingsBehavior.AllowSelectByRowClick = true;
+            grid.SettingsBehavior.AllowSelectSingleRowOnly = false;
+            grid.CommandColumn.ShowSelectCheckbox = true;
+            grid.CommandColumn.Visible = true;
+        }
+).Bind(Model.Artikli).GetHtml() 

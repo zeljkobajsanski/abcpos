@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:53723/SyncService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:53723/SyncService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:53723/SyncService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISyncService_Hello_InputMessage">
+    <wsdl:part name="parameters" element="tns:Hello" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_Hello_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_JediniceMere_InputMessage">
+    <wsdl:part name="parameters" element="tns:JediniceMere" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_JediniceMere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JediniceMereResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_Pdv_InputMessage">
+    <wsdl:part name="parameters" element="tns:Pdv" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_Pdv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PdvResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiArtikle_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiArtikle" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiArtikle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiArtikleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiRadnju_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiRadnju" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiRadnju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiRadnjuResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiZalihe_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiZalihe" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiZalihe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiZaliheResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiRacune_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiRacune" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_VratiRacune_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiRacuneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_SinhronizujRacune_InputMessage">
+    <wsdl:part name="parameters" element="tns:SinhronizujRacune" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_SinhronizujRacune_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SinhronizujRacuneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_SacuvajRacun_InputMessage">
+    <wsdl:part name="parameters" element="tns:SacuvajRacun" />
+  </wsdl:message>
+  <wsdl:message name="ISyncService_SacuvajRacun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SacuvajRacunResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISyncService">
+    <wsdl:operation name="Hello">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/Hello" message="tns:ISyncService_Hello_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/HelloResponse" message="tns:ISyncService_Hello_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JediniceMere">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/JediniceMere" message="tns:ISyncService_JediniceMere_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/JediniceMereResponse" message="tns:ISyncService_JediniceMere_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Pdv">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/Pdv" message="tns:ISyncService_Pdv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/PdvResponse" message="tns:ISyncService_Pdv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiArtikle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/VratiArtikle" message="tns:ISyncService_VratiArtikle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/VratiArtikleResponse" message="tns:ISyncService_VratiArtikle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiRadnju">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/VratiRadnju" message="tns:ISyncService_VratiRadnju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/VratiRadnjuResponse" message="tns:ISyncService_VratiRadnju_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiZalihe">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/VratiZalihe" message="tns:ISyncService_VratiZalihe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/VratiZaliheResponse" message="tns:ISyncService_VratiZalihe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiRacune">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/VratiRacune" message="tns:ISyncService_VratiRacune_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/VratiRacuneResponse" message="tns:ISyncService_VratiRacune_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SinhronizujRacune">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/SinhronizujRacune" message="tns:ISyncService_SinhronizujRacune_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/SinhronizujRacuneResponse" message="tns:ISyncService_SinhronizujRacune_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SacuvajRacun">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISyncService/SacuvajRacun" message="tns:ISyncService_SacuvajRacun_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISyncService/SacuvajRacunResponse" message="tns:ISyncService_SacuvajRacun_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="http" type="tns:ISyncService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Hello">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/Hello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JediniceMere">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/JediniceMere" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pdv">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/Pdv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiArtikle">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/VratiArtikle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiRadnju">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/VratiRadnju" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiZalihe">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/VratiZalihe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiRacune">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/VratiRacune" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SinhronizujRacune">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/SinhronizujRacune" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SacuvajRacun">
+      <soap:operation soapAction="http://tempuri.org/ISyncService/SacuvajRacun" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SyncService">
+    <wsdl:port name="http" binding="tns:http">
+      <soap:address location="http://localhost:53723/SyncService.svc/http" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

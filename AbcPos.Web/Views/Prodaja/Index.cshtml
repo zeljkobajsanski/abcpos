@@ -1,0 +1,66 @@
+﻿@using AbcPos.Core.Models
+@using AbcPos.Web.Settings
+@using LabelSettings = AbcPos.Web.Settings.LabelSettings
+@{
+    ViewBag.Title = "Pregled prodaje";
+    @model AbcPos.Web.ViewModels.PregledDokumenataViewModel
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/dokumenti.css")"/>
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/app/dokumenti.js")"></script>
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="line">
+    @Html.DevExpress().Label(new AbcPos.Web.Settings.LabelSettings("Od", "odDatuma")).GetHtml()
+    @Html.DevExpress().DateEdit(
+        date =>
+        {
+            date.Name = "odDatuma";
+            date.ControlStyle.CssClass = "editor";
+        }
+         ).Bind(Model.Kriterijumi.OdDatuma).GetHtml()
+</div>
+<div class="line">
+    @Html.DevExpress().Label(new AbcPos.Web.Settings.LabelSettings("Do", "doDatuma")).GetHtml()
+    @Html.DevExpress().DateEdit(
+        date =>
+        {
+            date.Name = "doDatuma";
+            date.ControlStyle.CssClass = "editor";
+        }
+    ).Bind(Model.Kriterijumi.DoDatuma).GetHtml()
+</div>
+
+<div class="line">
+    @Html.DevExpress().Label(new LabelSettings("Prodavnica", "idRadnje")).GetHtml()
+    @Html.DevExpress().ComboBox(
+        new RadnjaComboBoxSettings("idRadnje"){ShowModelErrors = false}
+    ).BindList(Model.Radnje).Bind(Model.Kriterijumi.IdRadnje).GetHtml()
+</div>
+
+<div class="line">
+    @Html.DevExpress().Button(
+        button =>
+        {
+            button.Name = "btnPretrazi";
+            button.Text = "Pretraži";
+            button.ClientSideEvents.Click = "app.dokumenti.pretrazi";
+        }
+    ).GetHtml()
+</div>
+
+<div id="dokumentiGrid">
+    @Html.Partial("_DokumentiGrid", Model)
+</div>
+<div id="stavkeRacuna">
+    @Html.Partial("_StavkeGrid", Enumerable.Empty<StavkaRacuna>())
+</div>
+

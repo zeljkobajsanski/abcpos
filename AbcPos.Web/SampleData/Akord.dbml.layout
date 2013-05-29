@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Akord">
+  <DataContextMoniker Name="/AkordDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a5360a1a-8dfb-4799-a794-c21dc535b954" absoluteBounds="1.375, 1, 2, 1.9631982421875">
+      <DataClassMoniker Name="/AkordDataContext/RM_Artikli" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d622b24b-58d6-40a2-9633-d46302ebc633" absoluteBounds="1.3900000000000001, 1.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="58eca900-f32b-4435-9f07-1f2d992308fd" absoluteBounds="1.375, 3.75, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/AkordDataContext/RM_EanKodovi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b785af0e-a75e-4068-9dba-ff5df0e9dcb1" absoluteBounds="1.3899999999999997, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.375 : 2.9631982421875); (2.375 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AkordDataContext/RM_Artikli/RM_Artikli_RM_EanKodovi" />
+      <nodes>
+        <classShapeMoniker Id="a5360a1a-8dfb-4799-a794-c21dc535b954" />
+        <classShapeMoniker Id="58eca900-f32b-4435-9f07-1f2d992308fd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="466f52c3-ec45-44fc-a7dc-b77bd070625b" absoluteBounds="4.75, 4.375, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/AkordDataContext/RM_Zalihe" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c169a92a-1130-437e-b7a1-bc0d302f1b9f" absoluteBounds="4.765, 4.835, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 1.98159912109375); (5.75 : 1.98159912109375); (5.75 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AkordDataContext/RM_Artikli/RM_Artikli_RM_Zalihe" />
+      <nodes>
+        <classShapeMoniker Id="a5360a1a-8dfb-4799-a794-c21dc535b954" />
+        <classShapeMoniker Id="466f52c3-ec45-44fc-a7dc-b77bd070625b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

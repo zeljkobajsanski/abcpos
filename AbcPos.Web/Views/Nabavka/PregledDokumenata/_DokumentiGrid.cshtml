@@ -1,0 +1,50 @@
+﻿@using System.Web.UI.WebControls
+@model AbcPos.Web.ViewModels.PregledDokumenataViewModel
+
+@Html.DevExpress().GridView(
+    grid =>
+    {
+        grid.Name = "gvDokumenti";
+        grid.CallbackRouteValues = new {action = "Index"};
+        grid.Width = Unit.Percentage(100);
+        
+        // columns
+        grid.Columns.Add(c =>
+        {
+            c.SetDataItemTemplateContent(t =>
+            {
+                @Html.DevExpress().HyperLink(
+                    lnk =>
+                    {
+                        lnk.Properties.ImageUrl = @Url.Content("~/Content/images/edit.png");
+                        lnk.NavigateUrl = @Url.Action("IzmeniDokument", new {id = DataBinder.Eval(t.DataItem, "ID")});
+                    }    
+                ).Render();
+            });
+        });
+        grid.Columns.Add("Datum").Width = Unit.Pixel(120);
+        grid.Columns.Add("Oznaka");
+        grid.Columns.Add("Komitent.Naziv", "Naziv komitenta");
+        grid.Columns.Add("Ukupno", "Ukupno").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add(c =>
+        {
+            c.Caption = "Status";
+            c.Width = Unit.Pixel(40);
+            c.SetDataItemTemplateContent(t =>
+            {
+                var zatvorena = (bool) DataBinder.Eval(t.DataItem, "Zakljucen");
+                @Html.DevExpress().Image(
+                    img =>
+                    {
+                        img.ImageUrl = @Url.Content("~/Content/images/" + (zatvorena ? "zatvorena_16.png" : "otvorena_16.png"));
+                    }    
+                ).Render();
+            });
+        });
+        
+        
+        // events
+        grid.ClientSideEvents.BeginCallback = "app.dokumenti.gvDokumentiBeginCallback";
+
+    }
+).Bind(Model.Dokumenti).GetHtml()

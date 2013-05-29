@@ -1,0 +1,47 @@
+﻿@using System.Web.UI.WebControls
+@using AbcPos.Web.Settings
+@model AbcPos.Web.ViewModels.NabavkaViewModel
+
+@Html.DevExpress().GridView(
+        grid =>
+        {
+            grid.Name = "gvStavke";
+            grid.CallbackRouteValues = new {action = "VratiStavkeDokumenta", idDokumenta = Model.Dokument.ID};
+            grid.Width = Unit.Percentage(100);
+            grid.KeyFieldName = "ID";
+            
+            // columns
+            grid.Columns.Add(c =>
+            {
+                //c.FieldName = "ID";
+                c.SetDataItemTemplateContent(t =>
+                {
+                    var id = DataBinder.Eval(t.DataItem, "ID");
+                    var editSettings = new EditImageSettings(@Url, "izmeni_" + id)
+                    {
+                        CustomJSProperties = (sender, args) => args.Properties.Add("cp_IdStavke", id),
+                    };
+                    editSettings.Properties.ClientSideEvents.Click = "app.nabavka.izmenaStavke";
+                    editSettings.ControlStyle.CssClass = "commandImageButton";
+                    @Html.DevExpress().Image(editSettings).Render();
+                    
+                    var deleteSettings = new DeleteImageSettings(@Url, "brisi_" + id)
+                    {
+                        CustomJSProperties = (sender, args) => args.Properties.Add("cp_IdStavke", id),
+                    };
+                    deleteSettings.ControlStyle.CssClass = "commandImageButton";
+                    deleteSettings.Properties.ClientSideEvents.Click = "app.nabavka.obrisiStavku";
+                    @Html.DevExpress().Image(deleteSettings).Render();
+                });
+            });
+            grid.Columns.Add("Artikal.Sifra", "Šifra");
+            grid.Columns.Add("Artikal.Naziv", "Naziv artikla");
+            grid.Columns.Add("Kolicina", "Količina").PropertiesEdit.DisplayFormatString = "n4";
+            grid.Columns.Add("NabavnaCena", "Nabavna cena").PropertiesEdit.DisplayFormatString = "n2";
+            grid.Columns.Add("ProdajnaCena", "Prodajna cena").PropertiesEdit.DisplayFormatString = "n2";
+            grid.Columns.Add("NabavnaBrutoVrednost", "Ukupno").PropertiesEdit.DisplayFormatString = "n2";
+            
+            // events
+            grid.ClientSideEvents.BeginCallback = "app.nabavka.stavkeGridBeginCallback";
+        }
+).Bind(Model.Dokument.Stavke).GetHtml()    

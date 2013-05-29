@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53723/SyncService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfJedinicaMere">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JedinicaMere" nillable="true" type="tns:JedinicaMere" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJedinicaMere" nillable="true" type="tns:ArrayOfJedinicaMere" />
+  <xs:complexType name="JedinicaMere">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Oznaka" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="JedinicaMere" nillable="true" type="tns:JedinicaMere" />
+  <xs:complexType name="Entity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Notifiable">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Entity" nillable="true" type="tns:Entity" />
+  <xs:complexType name="Notifiable">
+    <xs:sequence />
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Notifiable" nillable="true" type="tns:Notifiable" />
+  <xs:complexType name="ArrayOfPdv">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pdv" nillable="true" type="tns:Pdv" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPdv" nillable="true" type="tns:ArrayOfPdv" />
+  <xs:complexType name="Pdv">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Stopa" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Pdv" nillable="true" type="tns:Pdv" />
+  <xs:complexType name="ArrayOfArtikal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Artikal" nillable="true" type="tns:Artikal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArtikal" nillable="true" type="tns:ArrayOfArtikal" />
+  <xs:complexType name="Artikal">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Barkod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cena" type="xs:decimal" />
+          <xs:element minOccurs="0" name="JedinicaMere" nillable="true" type="tns:JedinicaMere" />
+          <xs:element minOccurs="0" name="JedinicaMereID" type="xs:int" />
+          <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pdv" nillable="true" type="tns:Pdv" />
+          <xs:element minOccurs="0" name="PdvID" type="xs:int" />
+          <xs:element minOccurs="0" name="Sifra" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zaliha" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Zalihe" nillable="true" type="tns:ArrayOfZaliha" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Artikal" nillable="true" type="tns:Artikal" />
+  <xs:complexType name="ArrayOfZaliha">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Zaliha" nillable="true" type="tns:Zaliha" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZaliha" nillable="true" type="tns:ArrayOfZaliha" />
+  <xs:complexType name="Zaliha">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArtikalID" type="xs:int" />
+          <xs:element minOccurs="0" name="NabavnaCena" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProdajnaCena" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RadnjaID" type="xs:int" />
+          <xs:element minOccurs="0" name="TrenutnaZaliha" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UkupnaZaliha" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Zaliha" nillable="true" type="tns:Zaliha" />
+  <xs:complexType name="Radnja">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zalihe" nillable="true" type="tns:ArrayOfZaliha" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Radnja" nillable="true" type="tns:Radnja" />
+  <xs:complexType name="ArrayOfRacun">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Racun" nillable="true" type="tns:Racun" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRacun" nillable="true" type="tns:ArrayOfRacun" />
+  <xs:complexType name="Racun">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Dokument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cek" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Gotovina" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IznosRacuna" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Kartica" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="StavkeRacuna" nillable="true" type="tns:ArrayOfStavkaRacuna" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Racun" nillable="true" type="tns:Racun" />
+  <xs:complexType name="Dokument">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Datum" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Komitent" nillable="true" type="tns:Komitent" />
+          <xs:element minOccurs="0" name="KomitentID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Oznaka" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Radnja" nillable="true" type="tns:Radnja" />
+          <xs:element minOccurs="0" name="RadnjaID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Sinhronizovan" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Stavke" nillable="true" type="tns:ArrayOfStavkaDokumenta" />
+          <xs:element minOccurs="0" name="TipDokumenta" type="xs:int" />
+          <xs:element minOccurs="0" name="UID" type="ser:guid" />
+          <xs:element minOccurs="0" name="Zakljucen" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Dokument" nillable="true" type="tns:Dokument" />
+  <xs:complexType name="Komitent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sifra" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Komitent" nillable="true" type="tns:Komitent" />
+  <xs:complexType name="ArrayOfStavkaDokumenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StavkaDokumenta" nillable="true" type="tns:StavkaDokumenta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStavkaDokumenta" nillable="true" type="tns:ArrayOfStavkaDokumenta" />
+  <xs:complexType name="StavkaDokumenta">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Entity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artikal" nillable="true" type="tns:Artikal" />
+          <xs:element minOccurs="0" name="ArtikalID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Dokument" nillable="true" type="tns:Dokument" />
+          <xs:element minOccurs="0" name="DokumentID" type="xs:int" />
+          <xs:element minOccurs="0" name="Kolicina" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NabavnaCena" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProcenatRabata" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProdajnaCena" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StavkaDokumenta" nillable="true" type="tns:StavkaDokumenta" />
+  <xs:complexType name="ArrayOfStavkaRacuna">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StavkaRacuna" nillable="true" type="tns:StavkaRacuna" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStavkaRacuna" nillable="true" type="tns:ArrayOfStavkaRacuna" />
+  <xs:complexType name="StavkaRacuna">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StavkaDokumenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Rbr" type="xs:int" />
+          <xs:element minOccurs="0" name="Sifra" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StavkaRacuna" nillable="true" type="tns:StavkaRacuna" />
+</xs:schema>

@@ -1,0 +1,23 @@
+﻿@using System.Web.UI.WebControls
+@using ViewType = DevExpress.XtraCharts.ViewType
+@model IEnumerable<AbcPos.Core.Models.Zaliha>
+
+@Html.DevExpress().Chart(
+        chart =>
+        {
+            chart.Name = "dijagram";
+            chart.Width = Unit.Pixel(960);
+            chart.Height = Unit.Pixel(600);
+            chart.CustomActionRouteValues = new {action = "VratiDijagram"};
+            chart.CallbackRouteValues = new {action = "VratiDijagram"};
+            var ukupneZalihe = new Series("Ukupne zalihe", ViewType.Bar){ArgumentDataMember = "Artikal.Naziv"};
+            ukupneZalihe.ValueDataMembers[0] = "UkupnaZaliha";
+            var trenutneZalihe = new Series("Trenutne zalihe", ViewType.Bar) { ArgumentDataMember = "Artikal.Naziv" };
+            trenutneZalihe.ValueDataMembers[0] = "TrenutnaZaliha";
+
+            chart.Series.Add(ukupneZalihe);
+            chart.Series.Add(trenutneZalihe);
+
+            chart.Legend.Visible = false;
+        }
+).Bind(Model).GetHtml()

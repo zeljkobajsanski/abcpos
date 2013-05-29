@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Artikli";
+}
+
+@using AbcPos.Web.ViewModels
+@model AbcPos.Web.ViewModels.ArtikliViewModel
+
+@section styles
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/artikli.css")" />
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/app/artikli.js")"></script>
+}
+<h1>@ViewBag.Title</h1>
+<div id="artikli">
+    @Html.Partial("_ArtikliGrid", Model)    
+</div>
+<div id="zalihe">
+    @Html.Partial("_ZaliheGrid", new ZaliheArtiklaViewModel())
+</div>

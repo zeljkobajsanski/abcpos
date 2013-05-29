@@ -1,0 +1,23 @@
+﻿@using AbcPos.Web.Settings
+@using LabelSettings = AbcPos.Web.Settings.LabelSettings
+ @model AbcPos.Web.ViewModels.ZaliheViewModel
+
+<div class="line">
+    @Html.DevExpress().Label(new LabelSettings("Prodavnica", "IdProdavnice")).GetHtml()
+    @Html.DevExpress().ComboBox(new RadnjaComboBoxSettings("IdProdavnice")).BindList(Model.Radnje).Bind(Model.IdRadnje).GetHtml()
+</div>
+<div class="line">
+    @Html.DevExpress().Button(
+        btn =>
+        {
+            btn.Name = "btnPretrazi";
+            btn.Text = "Prikaži";
+            btn.ClientSideEvents.Click = "app.zalihe.prikazi";
+            btn.ControlStyle.CssClass = "buttonPretrazi";
+        }
+    ).GetHtml()
+</div>
+
+<div>
+    @Html.Partial("_ZaliheGrid", Model.Zalihe)
+</div>

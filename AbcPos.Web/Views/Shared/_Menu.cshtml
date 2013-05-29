@@ -1,0 +1,12 @@
+﻿@Html.DevExpress().Menu(
+    menu =>
+    {
+        menu.Name = "mainMenu";
+        menu.Items.Add("Artikli", "Artikli").NavigateUrl = @Url.Action("Index", "Artikli");
+        menu.Items.Add("Zalihe", "Zalihe").NavigateUrl = @Url.Action("Index", "Zalihe");
+        var nabavka = menu.Items.Add("Nabavka", "Nabavka");
+        nabavka.Items.Add("Nabavka", "NovaNabavka", "", @Url.Action("NovaNabavka", "Nabavka"));
+        nabavka.Items.Add("Pregled nabavke", "PregledNabavke", "", @Url.Action("Index", "Nabavka"));
+        menu.Items.Add("Pregled prodaje", "PregledProdaje", "", @Url.Action("Index", "Prodaja"));
+    }
+).GetHtml()

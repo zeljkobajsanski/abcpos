@@ -1,0 +1,21 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<AbcPos.Core.Models.StavkaDokumenta>
+
+@Html.DevExpress().GridView(
+    grid =>
+    {
+        grid.Name = "gvStavke";
+        grid.CallbackRouteValues = new {action = "VratiStavkeRacuna"};
+        grid.Width = Unit.Percentage(100);
+
+        // columns
+        grid.Columns.Add("Artikal.Sifra", "Šifra");
+        grid.Columns.Add("Artikal.Naziv", "Naziv artikla");
+        grid.Columns.Add("ProdajnaCena", "Cena").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add("Kolicina", "Količina").PropertiesEdit.DisplayFormatString = "n2";
+        grid.Columns.Add("ProdajnaVrednost", "Iznos").PropertiesEdit.DisplayFormatString = "n2";
+        
+        // events
+        grid.ClientSideEvents.BeginCallback = "app.dokumenti.stavkeRacunaBeginCallback";
+    }
+).Bind(Model).GetHtml()

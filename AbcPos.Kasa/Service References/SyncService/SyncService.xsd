@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53723/SyncService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" />
+  <xs:element name="Hello">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HelloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HelloResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JediniceMere">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JediniceMereResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="JediniceMereResult" nillable="true" type="q1:ArrayOfJedinicaMere" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Pdv">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PdvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="PdvResult" nillable="true" type="q2:ArrayOfPdv" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiArtikle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRadnje" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiArtikleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="VratiArtikleResult" nillable="true" type="q3:ArrayOfArtikal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiRadnju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiRadnjuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="VratiRadnjuResult" nillable="true" type="q4:Radnja" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiZalihe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRadnje" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiZaliheResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="VratiZaliheResult" nillable="true" type="q5:ArrayOfZaliha" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiRacune">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRadnje" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiRacuneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="VratiRacuneResult" nillable="true" type="q6:ArrayOfRacun" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SinhronizujRacune">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="racuni" nillable="true" type="q7:ArrayOfRacun" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SinhronizujRacuneResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SacuvajRacun">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AbcPos.Core.Models" minOccurs="0" name="racun" nillable="true" type="q8:Racun" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SacuvajRacunResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

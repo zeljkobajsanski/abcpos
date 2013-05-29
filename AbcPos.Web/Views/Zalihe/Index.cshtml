@@ -1,0 +1,38 @@
+﻿@using AbcPos.Web.Settings
+@using LabelSettings = AbcPos.Web.Settings.LabelSettings
+@using ViewType = DevExpress.XtraCharts.ViewType
+@{
+    ViewBag.Title = "Zalihe";
+    @model AbcPos.Web.ViewModels.ZaliheViewModel
+}
+
+@section styles
+{
+    <link href="@Url.Content("~/Content/zalihe.css")" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/app/zalihe.js")"></script>
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.DevExpress().PageControl(
+    page =>
+    {
+        page.Name = "tab";
+        page.TabPages.Add(p1 =>
+        {
+            p1.Text = "Tabelarni prikaz";
+            p1.SetContent(() => @Html.RenderPartial("_TabelaPage", Model));
+        });
+        page.TabPages.Add(p2 =>
+        {
+            p2.Text = "Dijagram zaliha";
+            p2.SetContent(() => @Html.RenderPartial("_DijagramPage", Model));
+        });
+    }
+).GetHtml()
+
+

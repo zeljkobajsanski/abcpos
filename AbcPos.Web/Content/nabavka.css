@@ -1,0 +1,29 @@
+﻿body {
+}
+
+#nazivArtikla {
+    padding: 0;
+    margin: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#tbSifraArtikla {
+}
+
+#btnPretrazi {
+    padding-top: 3px;
+}
+
+#stavka {
+    float: left;
+}
+
+#stavkeGrid {
+    overflow: hidden;
+    margin-top: 34px;
+}
+
+.commandImageButton {
+    margin: 0 4px 0 4px;
+}

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Artikli";
+}
+
+<form class="form-horizontal" data-bind="submit: pretrazi">
+    <div class="control-group">
+        <label class="control-label">Šifra</label>
+        <div class="controls">
+            <input type="text" data-bind="value: sifra" />        
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Naziv artikla</label>
+        <div class="controls">
+            <input type="text" data-bind="value: naziv" autofocus />        
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <input type="submit" class="btn btn-success" value="Pretraži" />        
+            <input type="button" class="btn btn-danger" value="Otkaži" data-bind="click: otkazi"/>        
+        </div>
+    </div>
+</form>
+<div>
+    <div data-bind="kendoGrid: {data: artikli, pageable: { pageSize: 15 }, columns: columns, rowTemplate: 'rowTemplate'}">
+    </div>
+    <script id="rowTemplate" type="text/html">
+        <tr>
+            <td data-bind="text: sifra"></td>
+            <td data-bind="text: naziv"></td>
+            <td data-bind="text: jedinicaMere"></td>
+        </tr>
+    </script>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var viewModel = new Abc.ArtikliViewModel();
+            ko.applyBindings(viewModel);
+        });
+    </script>
+    
+
+    
+}

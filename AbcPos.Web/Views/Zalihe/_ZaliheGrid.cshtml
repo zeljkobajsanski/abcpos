@@ -1,0 +1,149 @@
+﻿@using System.Web.UI.WebControls
+@using LabelSettings = AbcPos.Web.Settings.LabelSettings
+@model IEnumerable<AbcPos.Core.Models.Zaliha>
+@{
+    var colWidth = Unit.Pixel(60);
+}
+@Html.DevExpress().GridView(
+    grid =>
+    {
+        grid.Name = "gvZalihe";
+        grid.CallbackRouteValues = new {action = "Index"};
+        grid.Width = Unit.Percentage(100);
+        grid.Settings.ShowFilterRow = true;
+        grid.Settings.ShowStatusBar = GridViewStatusBarMode.Auto;
+        grid.SettingsPager.PageSize = 20;
+        
+        // Columns
+        //grid.CommandColumn.Visible = true;
+        //grid.CommandColumn.EditButton.Visible = true;
+        grid.Columns.Add(c =>
+        {
+            c.Caption = "#";
+            c.SetDataItemTemplateContent(tc =>
+            {
+                var id = DataBinder.Eval(tc.DataItem, "ID");
+                @Html.DevExpress().HyperLink(
+                    lnk =>
+                    {
+                        lnk.Name = "edit_" + id;
+                        lnk.Properties.ImageUrl = @Url.Content("~/Content/images/edit.png");
+                        lnk.ControlStyle.Cursor = "pointer";
+                        lnk.CustomJSProperties = (sender, args) => args.Properties.Add("cpId", id);
+                        lnk.Properties.ClientSideEvents.Click = "app.zalihe.edit";
+                    }
+                ).Render();
+            });
+        });
+        grid.Columns.Add("Artikal.Sifra", "Šifra").Width = Unit.Pixel(60);
+        var colNaziv = grid.Columns.Add("Artikal.Naziv", "Naziv artikla");
+            colNaziv.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        var colPCena = grid.Columns.Add("ProdajnaCena", "Prodajna cena");
+            colPCena.PropertiesEdit.DisplayFormatString = "n2";
+            colPCena.Width = colWidth;
+        var colNCena = grid.Columns.Add("NabavnaCena", "Nabavna cena");
+            colNCena.PropertiesEdit.DisplayFormatString = "n2";
+            colNCena.Width = colWidth;
+        var colRuc = grid.Columns.Add("Ruc", "RUC");
+            colRuc.PropertiesEdit.DisplayFormatString = "n2";
+            colRuc.Width = colWidth;
+        var colRucP = grid.Columns.Add("ProcenatRuca", "RUC %");
+            colRucP.PropertiesEdit.DisplayFormatString = "{0:n2} %";
+            colRucP.Width = colWidth;
+        var colMin = grid.Columns.Add("MinimalnaZaliha", "Min zaliha");
+            colMin.PropertiesEdit.DisplayFormatString = "n4";
+            colMin.Width = colWidth;
+        var colZ = grid.Columns.Add("TrenutnaZaliha", "Zaliha");
+            colZ.PropertiesEdit.DisplayFormatString = "n4";
+            colZ.Width = colWidth;
+        colZ.SetDataItemTemplateContent(tc =>
+        {
+            var zaliha = Convert.ToDecimal(DataBinder.Eval(tc.DataItem, "TrenutnaZaliha"));
+            var maxZalihaValue = DataBinder.Eval(tc.DataItem, "MaximalnaZaliha");
+            var maxZaliha = maxZalihaValue != null ?  Convert.ToDecimal(maxZalihaValue) : (decimal?)null;
+            var minZalihaValue = DataBinder.Eval(tc.DataItem, "MinimalnaZaliha");
+            var minZaliha = minZalihaValue != null ? Convert.ToDecimal(minZalihaValue) : (decimal?)null;
+
+            if (minZaliha.HasValue && zaliha <= minZaliha)
+            {
+                ViewContext.Writer.WriteLine("<span class='zaliheAlert'>" + zaliha.ToString("n4") + "</span>");
+                return;
+            }
+            if (maxZaliha.HasValue && zaliha > maxZaliha)
+            {
+                ViewContext.Writer.WriteLine("<span class='zaliheAlert'>" + zaliha.ToString("n4") + "</span>");
+                return;
+            }
+            ViewContext.Writer.WriteLine("<span>" + zaliha.ToString("n4") + "</span>");
+        }); 
+        var colMax = grid.Columns.Add("MaximalnaZaliha", "Max zaliha");
+            colMax.PropertiesEdit.DisplayFormatString = "n4";
+            colMax.Width = colWidth;
+        
+        // Editing
+        grid.KeyFieldName = "ID";
+        grid.SettingsEditing.UpdateRowRouteValues = new {action = "SacuvajIzmene"};
+        grid.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        grid.SetEditFormTemplateContent(tc =>
+        {
+            ViewContext.Writer.Write(@Html.Hidden("RadnjaID", DataBinder.Eval(tc.DataItem, "RadnjaID")));
+            ViewContext.Writer.WriteLine("<div class='line'>");
+            @Html.DevExpress().Label(new LabelSettings("Min zaliha", "MinimalnaZaliha")).Render();
+            @Html.DevExpress().SpinEdit(
+                text =>
+                {
+                    text.Name = "MinimalnaZaliha";
+                    text.Properties.ClientInstanceName = "txtMinZaliha";
+                    text.ControlStyle.CssClass = "editor";
+                    text.Properties.DecimalPlaces = 4;
+                    text.Properties.DisplayFormatString = "n4";
+                    text.Properties.DisplayFormatInEditMode = true;
+                }).Bind(DataBinder.Eval(tc.DataItem, "MinimalnaZaliha")).GetHtml();
+            ViewContext.Writer.WriteLine("</div>");
+            ViewContext.Writer.WriteLine("<div class='line'>");
+            @Html.DevExpress().Label(new LabelSettings("Max zaliha", "MaximalnaZaliha")).Render();
+            @Html.DevExpress().SpinEdit(
+                text =>
+                {
+                    text.Name = "MaximalnaZaliha";
+                    text.ControlStyle.CssClass = "editor";
+                    text.Properties.DecimalPlaces = 4;
+                    text.Properties.DisplayFormatString = "n4";
+                    text.Properties.DisplayFormatInEditMode = true;
+                }).Bind(DataBinder.Eval(tc.DataItem, "MaximalnaZaliha")).GetHtml();
+            ViewContext.Writer.WriteLine("</div>");
+            ViewContext.Writer.WriteLine("<div class='line'>");
+            @Html.DevExpress().Label(new LabelSettings("Prodajna cena", "ProdajnaCena")).Render();
+            @Html.DevExpress().SpinEdit(
+                text =>
+                {
+                    text.Name = "ProdajnaCena";
+                    text.ControlStyle.CssClass = "editor";
+                    text.Properties.DecimalPlaces = 2;
+                    text.Properties.DisplayFormatString = "n2";
+                    text.Properties.DisplayFormatInEditMode = true;
+                }).Bind(DataBinder.Eval(tc.DataItem, "ProdajnaCena")).GetHtml();
+            ViewContext.Writer.WriteLine("</div>");
+            ViewContext.Writer.WriteLine("<div class='line'>");
+            @Html.DevExpress().Button(
+                btn =>
+                {
+                    btn.Name = "btnSacuvaj";
+                    btn.Text = "Sačuvaj";
+                    btn.ClientSideEvents.Click = "function(){gvZalihe.UpdateEdit()}";
+                }    
+            ).Render();
+            ViewContext.Writer.WriteLine("</div>");
+        });
+        
+        
+        // Loader
+        grid.SettingsLoadingPanel.Enabled = true;
+        grid.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.ShowOnStatusBar;
+        grid.SettingsLoadingPanel.Text = "Učitavam...";
+        
+        // Events
+        grid.ClientSideEvents.BeginCallback = "app.zalihe.gvZaliheBeginCallback";
+        grid.ClientSideEvents.EndCallback = "app.zalihe.gvZaliheEndCallback";
+    }
+).Bind(Model).GetHtml()

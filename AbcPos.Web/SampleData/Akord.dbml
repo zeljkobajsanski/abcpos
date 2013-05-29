@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Razvoj" Class="AkordDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.0.61;Initial Catalog=Razvoj;Persist Security Info=True;User ID=AkordUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ProdukcijaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.RM_Artikli" Member="RM_Artiklis">
+    <Type Name="RM_Artikli">
+      <Column Name="IdSistema" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdArtikla" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaticniBroj" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivArtikla" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="KataloskiBroj" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="IdBrenda" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="RM_Artikli_RM_EanKodovi" Member="RM_EanKodovis" ThisKey="IdSistema,IdArtikla" OtherKey="IdSistema,IdArtikla" Type="RM_EanKodovi" />
+      <Association Name="RM_Artikli_RM_Zalihe" Member="RM_Zalihes" ThisKey="IdSistema,IdArtikla" OtherKey="IdSistema,IdArtikla" Type="RM_Zalihe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RM_EanKodovi" Member="RM_EanKodovis">
+    <Type Name="RM_EanKodovi">
+      <Column Name="IdSistema" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdArtikla" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EanKod" Type="System.String" DbType="NVarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="RM_Artikli_RM_EanKodovi" Member="RM_Artikli" ThisKey="IdSistema,IdArtikla" OtherKey="IdSistema,IdArtikla" Type="RM_Artikli" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RM_Zalihe" Member="RM_Zalihes">
+    <Type Name="RM_Zalihe">
+      <Column Name="IdSistema" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdOJ" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdArtikla" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdSerije" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdOdeljka" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Zaliha" Type="System.Decimal" DbType="Decimal(22,8) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="NabavnaVrednost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ProdajnaVrednost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="RM_Artikli_RM_Zalihe" Member="RM_Artikli" ThisKey="IdSistema,IdArtikla" OtherKey="IdSistema,IdArtikla" Type="RM_Artikli" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

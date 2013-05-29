@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Nova nabavka";
+}
+@using AbcPos.Web.Settings
+@model AbcPos.Web.ViewModels.NabavkaViewModel
+
+@section styles
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/nabavka.css")"/>
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/app/pretragaArtikala.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/app/controls.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/app/nabavka.js")"></script>
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.Partial("_Zaglavlje", Model)
+@Html.Partial("_Stavka", Model)
+
+<div id="stavkeGrid">
+    @Html.Partial("_StavkeGrid", Model) 
+    @Html.DevExpress().Button(
+        btn =>
+        {
+            btn.Name = "btnZakljuci";
+            btn.Text = "Aktiviraj";
+            btn.ClientSideEvents.Click = "app.nabavka.aktivirajDokument";
+        }
+    ).GetHtml()   
+</div>
+
+
+@*@Html.DevExpress().PopupControl(new PretragaArtikalaPopupSettings(@Html){ PopupElementID = "btnPretrazi" }
+).GetHtml()*@
+@Html.Partial("PretragaArtikala/_PretragaArtikalaDialog")

@@ -1,0 +1,54 @@
+﻿body {
+    font-family: verdana,'lucida grande',tahoma,arial,sans-serif;
+    font-size: 11px;
+    width: 1024px;
+    margin: 4px auto;
+    background: url('images/back1-light.png') repeat;
+    
+}
+
+#contentWrapper {
+    -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+    box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+    min-height: 700px;
+    background-color: white;
+    padding: 4px;
+}
+
+header {
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+.label {
+    float: left;
+    width: 150px;
+}
+
+.editor {
+    width: 170px;
+}
+
+.editor, .label {
+    margin: 4px;
+}
+
+.button {
+    margin: 4px;
+}
+
+.line {
+    clear: both;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.buttonPretrazi {
+    margin: 4px 0;
+}

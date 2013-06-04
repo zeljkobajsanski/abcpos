@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AbcPos.Core.Repository;
 using AbcPos.Web.SampleData;
+using Bootstrap;
+using Bootstrap.AutoMapper;
 
 namespace AbcPos.Web
 {
@@ -38,7 +40,7 @@ namespace AbcPos.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-			
+			Bootstrapper.With.AutoMapper().Start();
 			ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             //new Repository().InitDb();

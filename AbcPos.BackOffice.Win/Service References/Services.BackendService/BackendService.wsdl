@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BackendService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:53754/Services/BackendService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:53754/Services/BackendService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:53754/Services/BackendService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AbcPos.Web.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="BackendService_VratiArtikle_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiArtikle" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_VratiArtikle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiArtikleResponse" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_VratiJediniceMera_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiJediniceMera" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_VratiJediniceMera_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiJediniceMeraResponse" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_VratiPdv_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiPdv" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_VratiPdv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiPdvResponse" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_SacuvajArtikal_InputMessage">
+    <wsdl:part name="parameters" element="tns:SacuvajArtikal" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_SacuvajArtikal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SacuvajArtikalResponse" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="BackendService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BackendService">
+    <wsdl:operation name="VratiArtikle">
+      <wsdl:input wsaw:Action="http://tempuri.org/BackendService/VratiArtikle" message="tns:BackendService_VratiArtikle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/BackendService/VratiArtikleResponse" message="tns:BackendService_VratiArtikle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiJediniceMera">
+      <wsdl:input wsaw:Action="http://tempuri.org/BackendService/VratiJediniceMera" message="tns:BackendService_VratiJediniceMera_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/BackendService/VratiJediniceMeraResponse" message="tns:BackendService_VratiJediniceMera_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiPdv">
+      <wsdl:input wsaw:Action="http://tempuri.org/BackendService/VratiPdv" message="tns:BackendService_VratiPdv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/BackendService/VratiPdvResponse" message="tns:BackendService_VratiPdv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SacuvajArtikal">
+      <wsdl:input wsaw:Action="http://tempuri.org/BackendService/SacuvajArtikal" message="tns:BackendService_SacuvajArtikal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/BackendService/SacuvajArtikalResponse" message="tns:BackendService_SacuvajArtikal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/BackendService/Ping" message="tns:BackendService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/BackendService/PingResponse" message="tns:BackendService_Ping_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="http" type="tns:BackendService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VratiArtikle">
+      <soap:operation soapAction="http://tempuri.org/BackendService/VratiArtikle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiJediniceMera">
+      <soap:operation soapAction="http://tempuri.org/BackendService/VratiJediniceMera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiPdv">
+      <soap:operation soapAction="http://tempuri.org/BackendService/VratiPdv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SacuvajArtikal">
+      <soap:operation soapAction="http://tempuri.org/BackendService/SacuvajArtikal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/BackendService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BackendService">
+    <wsdl:port name="http" binding="tns:http">
+      <soap:address location="http://localhost:53754/Services/BackendService.svc/http" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

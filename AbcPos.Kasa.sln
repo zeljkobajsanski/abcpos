@@ -12,7 +12,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcPos.Web", "AbcPos.Web\Ab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcPos.UnitTests", "AbcPos.UnitTests\AbcPos.UnitTests.csproj", "{DF4C055D-78F8-41FA-98C4-4FA4653E5A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcPos.Web2", "AbcPos.Web2\AbcPos.Web2.csproj", "{302609B9-EDC4-4370-B611-10DC652BB3A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcPos.BackOffice", "AbcPos.BackOffice\AbcPos.BackOffice.csproj", "{EE0BB5F9-3B65-46E2-ABC6-0D26BD348C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcPos.BackOffice.Win", "AbcPos.BackOffice.Win\AbcPos.BackOffice.Win.csproj", "{A1F6B475-26FC-4B0D-9910-6B527749B144}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2DD2F59-6595-457D-9AAB-33585E737274} = {C2DD2F59-6595-457D-9AAB-33585E737274}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4EC95AF5-5352-4E80-98F4-847A8E1E9BF1}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +46,14 @@ Global
 		{DF4C055D-78F8-41FA-98C4-4FA4653E5A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF4C055D-78F8-41FA-98C4-4FA4653E5A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF4C055D-78F8-41FA-98C4-4FA4653E5A5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{302609B9-EDC4-4370-B611-10DC652BB3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{302609B9-EDC4-4370-B611-10DC652BB3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{302609B9-EDC4-4370-B611-10DC652BB3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{302609B9-EDC4-4370-B611-10DC652BB3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0BB5F9-3B65-46E2-ABC6-0D26BD348C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0BB5F9-3B65-46E2-ABC6-0D26BD348C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0BB5F9-3B65-46E2-ABC6-0D26BD348C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0BB5F9-3B65-46E2-ABC6-0D26BD348C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F6B475-26FC-4B0D-9910-6B527749B144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F6B475-26FC-4B0D-9910-6B527749B144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F6B475-26FC-4B0D-9910-6B527749B144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F6B475-26FC-4B0D-9910-6B527749B144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

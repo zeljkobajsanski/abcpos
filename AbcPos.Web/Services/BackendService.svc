@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AbcPos.Web.Services.BackendService" CodeBehind="BackendService.svc.cs" %>

@@ -44,6 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Bootstrapper">
+      <HintPath>..\packages\Bootstrapper.2.0.3.7\lib\Net40\Bootstrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Bootstrapper.AutoMapper">
+      <HintPath>..\packages\Bootstrapper.AutoMapper.2.0.3.7\lib\Net40\Bootstrapper.AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Charts.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -220,12 +229,14 @@
     <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\app\zalihe.js" />
+    <Content Include="Services\BackendService.svc" />
     <Content Include="SyncService.svc" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Artikli\Index.cshtml" />
     <Content Include="Views\Artikli\_ArtikliGrid.cshtml" />
     <Content Include="Views\Artikli\_ZaliheGrid.cshtml" />
+    <Content Include="_MSBuild\NuGetPackageAndPublish.targets" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -273,6 +284,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ISyncService.cs" />
+    <Compile Include="Models\Artikal.cs" />
+    <Compile Include="Models\KeyValue.cs" />
+    <Compile Include="Models\Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleData\Akord.designer.cs">
       <AutoGen>True</AutoGen>
@@ -280,6 +294,9 @@
       <DependentUpon>Akord.dbml</DependentUpon>
     </Compile>
     <Compile Include="SampleData\AkordArtikli.cs" />
+    <Compile Include="Services\BackendService.svc.cs">
+      <DependentUpon>BackendService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Settings\DeleteImageSettings.cs" />
     <Compile Include="Settings\EditImageSettings.cs" />
     <Compile Include="Settings\GridSettings.cs" />
@@ -305,9 +322,7 @@
       <Name>AbcPos.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

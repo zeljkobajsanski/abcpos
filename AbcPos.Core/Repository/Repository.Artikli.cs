@@ -12,6 +12,11 @@ namespace AbcPos.Core.Repository
           return DataContext.Artikli.ToArray();
       }
 
+      public Artikal VratiArtikal(int id)
+      {
+          return DataContext.Artikli.SingleOrDefault(x => x.ID == id);
+      }
+
       public Artikal[] VraiArtikleZaSinhronizaciju()
       {
           return DataContext.Artikli.ToArray();
@@ -95,6 +100,11 @@ namespace AbcPos.Core.Repository
       public Artikal VratiArtikalIZalihu(string sifraIliBarKod)
       {
           return DataContext.Artikli.Include("JedinicaMere").Include("Zalihe").SingleOrDefault(x => x.Sifra == sifraIliBarKod || x.Barkod == sifraIliBarKod);
+      }
+
+      public IQueryable<Artikal> VratiArtikleSaPdvIJedinicamaMere()
+      {
+          return DataContext.Artikli.Include("Pdv").Include("JedinicaMere");
       }
   }
 }

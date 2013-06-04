@@ -80,11 +80,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\DijalogUnosa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DijalogUnosa.Designer.cs">
+      <DependentUpon>DijalogUnosa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\UnosArtikla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\UnosArtikla.Designer.cs">
       <DependentUpon>UnosArtikla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\UnosDobavljaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\UnosDobavljaca.Designer.cs">
+      <DependentUpon>UnosDobavljaca.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -95,6 +107,7 @@
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\SendMessageEventArgs.cs" />
     <Compile Include="Models\Entities\Artikal.cs" />
+    <Compile Include="Models\Entities\Dobavljac.cs" />
     <Compile Include="Models\Entities\Entity.cs" />
     <Compile Include="Models\Entities\JedinicaMere.cs" />
     <Compile Include="Models\Entities\Pdv.cs" />
@@ -131,8 +144,14 @@
     <Compile Include="Views\Zalihe.Designer.cs">
       <DependentUpon>Zalihe.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\DijalogUnosa.resx">
+      <DependentUpon>DijalogUnosa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\UnosArtikla.resx">
       <DependentUpon>UnosArtikla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\UnosDobavljaca.resx">
+      <DependentUpon>UnosDobavljaca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -160,6 +179,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AbcPos.BackOffice.Win.Models.Entities.Artikal.datasource" />
+    <None Include="Properties\DataSources\AbcPos.BackOffice.Win.Models.Entities.Dobavljac.datasource" />
     <None Include="Properties\DataSources\AbcPos.BackOffice.Win.Models.Entities.JedinicaMere.datasource" />
     <None Include="Properties\DataSources\AbcPos.BackOffice.Win.Models.Entities.Pdv.datasource" />
     <None Include="Properties\Settings.settings">

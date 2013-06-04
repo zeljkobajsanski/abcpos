@@ -100,16 +100,20 @@ namespace AbcPos.BackOffice.Win.Views
 
         public override void NoviUnos()
         {
-            using (var d = new UnosArtikla(jedinicaMereBindingSource.DataSource, pdvBindingSource.DataSource))
+            //using (var d = new UnosArtikla(jedinicaMereBindingSource.DataSource, pdvBindingSource.DataSource))
+            //{
+            //    d.ShowDialog(this);
+            //    if (d.Artikal.Id != 0)
+            //    {
+            //        m_Artikli.Add(d.Artikal);
+            //        var ix = artikalBindingSource.IndexOf(d.Artikal);
+            //        artikalBindingSource.Position = ix;
+            //        OnSendMessage(new MessageSaved());
+            //    }
+            //}
+            using (var dlg = new UnosDobavljaca())
             {
-                d.ShowDialog(this);
-                if (d.Artikal.Id != 0)
-                {
-                    m_Artikli.Add(d.Artikal);
-                    var ix = artikalBindingSource.IndexOf(d.Artikal);
-                    artikalBindingSource.Position = ix;
-                    OnSendMessage(new MessageSaved());
-                }
+                dlg.ShowDialog(this);
             }
         }
     }

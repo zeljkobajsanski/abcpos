@@ -13,6 +13,9 @@ namespace AbcPos.Web.Services
     public class BackendService
     {
         [OperationContract]
+        void Ping() { }
+
+        [OperationContract]
         public IEnumerable<Artikal> VratiArtikle()
         {
             var artikli = new Repository().VratiArtikleSaPdvIJedinicamaMere().ToArray().Select(Mapper.Map);
@@ -42,6 +45,20 @@ namespace AbcPos.Web.Services
         }
 
         [OperationContract]
-        void Ping() {}
+        public IEnumerable<Dobavljac> VratiDobavljace()
+        {
+            var dobavljaci = new Repository().Dobavljaci();
+            return dobavljaci.Select(Mapper.Map);
+        }
+
+        [OperationContract]
+        public int SacuvajDobavljaca(Dobavljac dobavljac)
+        {
+            var d = Mapper.Map(dobavljac);
+            var repos = new Repository();
+            repos.SacuvajDobavljaca(d);
+            repos.Submit();
+            return d.ID;
+        }
     }
 }

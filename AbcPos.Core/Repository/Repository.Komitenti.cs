@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using AbcPos.Core.Models;
 using System.Linq;
 
@@ -28,6 +29,17 @@ namespace AbcPos.Core.Repository
 
         }
 
-        
+
+        public void SacuvajDobavljaca(Dobavljac dobavljac)
+        {
+            if (dobavljac.ID == 0)
+            {
+                DataContext.Komitenti.Add(dobavljac);
+            }
+            else
+            {
+                DataContext.Entry(dobavljac).State = EntityState.Modified;
+            }
+        }
     }
 }

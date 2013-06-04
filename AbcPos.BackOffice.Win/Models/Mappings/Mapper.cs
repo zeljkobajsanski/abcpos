@@ -18,6 +18,8 @@ namespace AbcPos.BackOffice.Win.Models.Mappings
             mapper.CreateMap<KeyValue, JedinicaMere>()
                 .ForMember(x => x.Oznaka, expression => expression.MapFrom(x => x.Value));
             mapper.CreateMap<KeyValue, Pdv>().ForMember(x => x.Oznaka, expression => expression.MapFrom(x => x.Value));
+            mapper.CreateMap<Entities.Dobavljac, Services.BackendService.Dobavljac>();
+            mapper.CreateMap<Services.BackendService.Dobavljac, Entities.Dobavljac>();
         }
 
         public static JedinicaMere Map(KeyValue keyValue)
@@ -40,10 +42,19 @@ namespace AbcPos.BackOffice.Win.Models.Mappings
             return AutoMapper.Mapper.Map<Pdv>(keyValue);
         }
 
-
         public static ValidationError Map(ValidationFailure validationFailure)
         {
             return AutoMapper.Mapper.Map<ValidationError>(validationFailure);
+        }
+
+        public static Entities.Dobavljac Map(Services.BackendService.Dobavljac dobavljac)
+        {
+            return AutoMapper.Mapper.Map<Entities.Dobavljac>(dobavljac);
+        }
+
+        public static Services.BackendService.Dobavljac Map(Entities.Dobavljac dobavljac)
+        {
+            return AutoMapper.Mapper.Map<Services.BackendService.Dobavljac>(dobavljac);
         }
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using AbcPos.BackOffice.Win.Models.Entities;
 using AbcPos.BackOffice.Win.Models.Mappings;
 using AbcPos.BackOffice.Win.Services.BackendService;
 using DevExpress.XtraEditors;
@@ -28,6 +21,11 @@ namespace AbcPos.BackOffice.Win.Dialogs
         {
             jedinicaMereBindingSource.DataSource = jediniceMera;
             pdvBindingSource.DataSource = pdv;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            SifraTextEdit.Focus();
         }
 
         private void Sacuvaj()

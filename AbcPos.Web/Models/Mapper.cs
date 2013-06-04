@@ -18,6 +18,8 @@ namespace AbcPos.Web.Models
             mapper.CreateMap<Pdv, KeyValue>()
                   .ForMember(x => x.Id, expression => expression.MapFrom(x => x.ID))
                   .ForMember(x => x.Value, expression => expression.MapFrom(x => x.Naziv));
+            mapper.CreateMap<Core.Models.Dobavljac, Dobavljac>();
+            mapper.CreateMap<Dobavljac, Core.Models.Dobavljac>();
         }
 
         public static Artikal Map(Core.Models.Artikal artikal)
@@ -38,6 +40,16 @@ namespace AbcPos.Web.Models
         public static KeyValue Map(Pdv pdv)
         {
             return AutoMapper.Mapper.Map<KeyValue>(pdv);
+        }
+
+        public static Dobavljac Map(Core.Models.Dobavljac dobavljac)
+        {
+            return AutoMapper.Mapper.Map<Dobavljac>(dobavljac);
+        }
+
+        public static Core.Models.Dobavljac Map(Dobavljac dobavljac)
+        {
+            return AutoMapper.Mapper.Map<Core.Models.Dobavljac>(dobavljac);
         }
     }
 }

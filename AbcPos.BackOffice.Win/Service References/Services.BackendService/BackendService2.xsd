@@ -33,4 +33,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="KeyValue" nillable="true" type="tns:KeyValue" />
+  <xs:complexType name="ArrayOfDobavljac">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Dobavljac" nillable="true" type="tns:Dobavljac" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDobavljac" nillable="true" type="tns:ArrayOfDobavljac" />
+  <xs:complexType name="Dobavljac">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sifra" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Dobavljac" nillable="true" type="tns:Dobavljac" />
 </xs:schema>

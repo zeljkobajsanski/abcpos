@@ -21,16 +21,25 @@ namespace AbcPos.BackOffice.Win.Views
             InitializeComponent();
             m_Artikli = new BindingList<Artikal>();
             artikalBindingSource.DataSource = m_Artikli;
-            artikalBindingSource.CurrentItemChanged += ArtikalBindingSourceOnCurrentItemChanged;
+            artikalBindingSource.CurrentChanged += ArtikalBindingSourceOnCurrentItemChanged;
         }
 
         private void ArtikalBindingSourceOnCurrentItemChanged(object sender, EventArgs eventArgs)
         {
+            if (m_TrenutniArtikal != null)
+            {
+                m_TrenutniArtikal.PropertyChanged -= TrenutniArtikalPropertyChanged;
+            }
             m_TrenutniArtikal = artikalBindingSource.Current as Artikal;
             if (m_TrenutniArtikal != null)
             {
-                m_TrenutniArtikal.PropertyChanged += (o, args) => SacuvajArtikal(m_TrenutniArtikal);
+                m_TrenutniArtikal.PropertyChanged += TrenutniArtikalPropertyChanged;
             }
+        }
+
+        private void TrenutniArtikalPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SacuvajArtikal(m_TrenutniArtikal);
         }
 
         private void SacuvajArtikal(Artikal artikal)
@@ -100,20 +109,16 @@ namespace AbcPos.BackOffice.Win.Views
 
         public override void NoviUnos()
         {
-            //using (var d = new UnosArtikla(jedinicaMereBindingSource.DataSource, pdvBindingSource.DataSource))
-            //{
-            //    d.ShowDialog(this);
-            //    if (d.Artikal.Id != 0)
-            //    {
-            //        m_Artikli.Add(d.Artikal);
-            //        var ix = artikalBindingSource.IndexOf(d.Artikal);
-            //        artikalBindingSource.Position = ix;
-            //        OnSendMessage(new MessageSaved());
-            //    }
-            //}
-            using (var dlg = new UnosDobavljaca())
+            using (var d = new UnosArtikla(jedinicaMereBindingSource.DataSource, pdvBindingSource.DataSource))
             {
-                dlg.ShowDialog(this);
+                d.ShowDialog(this);
+                if (d.Artikal.Id != 0)
+                {
+                    m_Artikli.Add(d.Artikal);
+                    var ix = artikalBindingSource.IndexOf(d.Artikal);
+                    artikalBindingSource.Position = ix;
+                    OnSendMessage(new MessageSaved());
+                }
             }
         }
     }

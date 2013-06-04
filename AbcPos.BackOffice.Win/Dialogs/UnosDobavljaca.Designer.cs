@@ -69,6 +69,7 @@
             // SifraTextEdit
             // 
             this.SifraTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dobavljacBindingSource, "Sifra", true));
+            this.SifraTextEdit.EnterMoveNextControl = true;
             this.SifraTextEdit.Location = new System.Drawing.Point(41, 12);
             this.SifraTextEdit.Name = "SifraTextEdit";
             this.SifraTextEdit.Size = new System.Drawing.Size(208, 20);
@@ -82,6 +83,7 @@
             // NazivTextEdit
             // 
             this.NazivTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dobavljacBindingSource, "Naziv", true));
+            this.NazivTextEdit.EnterMoveNextControl = true;
             this.NazivTextEdit.Location = new System.Drawing.Point(41, 36);
             this.NazivTextEdit.Name = "NazivTextEdit";
             this.NazivTextEdit.Size = new System.Drawing.Size(208, 20);

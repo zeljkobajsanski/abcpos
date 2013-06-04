@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.SifraTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.artikalBindingSource = new System.Windows.Forms.BindingSource();
+            this.artikalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NazivTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.JedinicaMereIDLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.jedinicaMereBindingSource = new System.Windows.Forms.BindingSource();
+            this.jedinicaMereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CenaSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.PdvIDLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.pdvBindingSource = new System.Windows.Forms.BindingSource();
+            this.pdvBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BarkodTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -64,7 +65,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -106,6 +107,7 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(1008, 729);
             this.layoutControl1.TabIndex = 0;
@@ -124,7 +126,7 @@
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
             this.dataLayoutControl1.Size = new System.Drawing.Size(321, 688);
-            this.dataLayoutControl1.TabIndex = 5;
+            this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // SifraTextEdit
@@ -135,7 +137,7 @@
             this.SifraTextEdit.Name = "SifraTextEdit";
             this.SifraTextEdit.Size = new System.Drawing.Size(229, 20);
             this.SifraTextEdit.StyleController = this.dataLayoutControl1;
-            this.SifraTextEdit.TabIndex = 4;
+            this.SifraTextEdit.TabIndex = 0;
             // 
             // artikalBindingSource
             // 
@@ -149,7 +151,7 @@
             this.NazivTextEdit.Name = "NazivTextEdit";
             this.NazivTextEdit.Size = new System.Drawing.Size(229, 20);
             this.NazivTextEdit.StyleController = this.dataLayoutControl1;
-            this.NazivTextEdit.TabIndex = 5;
+            this.NazivTextEdit.TabIndex = 1;
             // 
             // JedinicaMereIDLookUpEdit
             // 
@@ -167,7 +169,7 @@
             this.JedinicaMereIDLookUpEdit.Properties.ValueMember = "Id";
             this.JedinicaMereIDLookUpEdit.Size = new System.Drawing.Size(229, 20);
             this.JedinicaMereIDLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.JedinicaMereIDLookUpEdit.TabIndex = 6;
+            this.JedinicaMereIDLookUpEdit.TabIndex = 3;
             // 
             // jedinicaMereBindingSource
             // 
@@ -190,7 +192,7 @@
             this.CenaSpinEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.CenaSpinEdit.Size = new System.Drawing.Size(229, 20);
             this.CenaSpinEdit.StyleController = this.dataLayoutControl1;
-            this.CenaSpinEdit.TabIndex = 7;
+            this.CenaSpinEdit.TabIndex = 5;
             // 
             // PdvIDLookUpEdit
             // 
@@ -208,7 +210,7 @@
             this.PdvIDLookUpEdit.Properties.ValueMember = "Id";
             this.PdvIDLookUpEdit.Size = new System.Drawing.Size(229, 20);
             this.PdvIDLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.PdvIDLookUpEdit.TabIndex = 8;
+            this.PdvIDLookUpEdit.TabIndex = 4;
             // 
             // pdvBindingSource
             // 
@@ -222,7 +224,7 @@
             this.BarkodTextEdit.Name = "BarkodTextEdit";
             this.BarkodTextEdit.Size = new System.Drawing.Size(229, 20);
             this.BarkodTextEdit.StyleController = this.dataLayoutControl1;
-            this.BarkodTextEdit.TabIndex = 9;
+            this.BarkodTextEdit.TabIndex = 2;
             // 
             // Root
             // 

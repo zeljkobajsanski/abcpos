@@ -59,14 +59,14 @@
     <Reference Include="Bootstrapper.AutoMapper">
       <HintPath>..\packages\Bootstrapper.AutoMapper.2.0.3.7\lib\Net40\Bootstrapper.AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.BonusSkins.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.4.0.0.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -113,6 +113,7 @@
     <Compile Include="Models\Entities\Pdv.cs" />
     <Compile Include="Models\Mappings\Mapper.cs" />
     <Compile Include="Models\Validation\ArtikalValidator.cs" />
+    <Compile Include="Models\Validation\DobavljacValidator.cs" />
     <Compile Include="Models\Validation\IValidator.cs" />
     <Compile Include="Models\Validation\ValidationError.cs" />
     <Compile Include="Program.cs" />
@@ -128,6 +129,12 @@
     </Compile>
     <Compile Include="Views\Artikli.Designer.cs">
       <DependentUpon>Artikli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dobavljaci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dobavljaci.Designer.cs">
+      <DependentUpon>Dobavljaci.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\View.cs">
       <SubType>Form</SubType>
@@ -170,6 +177,9 @@
     <EmbeddedResource Include="Views\Artikli.resx">
       <DependentUpon>Artikli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dobavljaci.resx">
+      <DependentUpon>Dobavljaci.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\WaitForm1.resx">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +202,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\Services.BackendService\AbcPos.BackOffice.Win.Services.BackendService.Artikal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.BackendService\AbcPos.BackOffice.Win.Services.BackendService.Dobavljac.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.BackendService\AbcPos.BackOffice.Win.Services.BackendService.KeyValue.datasource">

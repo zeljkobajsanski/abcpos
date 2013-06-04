@@ -19,27 +19,37 @@ namespace AbcPos.BackOffice.Win
 
         private void AddContextMenu()
         {
-            var novi = new DelegateAction(OmoguciNoviUnos, NoviUnos);
-            novi.Caption = "Novi unos";
+            var novi = new DelegateAction(OmoguciNoviUnos, NoviUnos)
+                           {
+                               Caption = "Novi unos",
+                               Type = ActionType.Context,
+                               Edge = ActionEdge.Left,
+                               Behavior = ActionBehavior.HideBarOnClick
+                           };
             //logout.Image = Resources.user;
-            novi.Type = ActionType.Context;
-            novi.Edge = ActionEdge.Left;
-            novi.Behavior = ActionBehavior.HideBarOnClick;
-            windowsUIView1.ContentContainerActions.Add(novi);
-            var refresh = new DelegateAction(OmoguciOsvezi, Osvezi);
-            refresh.Caption = "Osveži";
+            
+            var refresh = new DelegateAction(OmoguciOsvezi, Osvezi)
+                              {
+                                  Caption = "Osveži",
+                                  Type = ActionType.Context,
+                                  Edge = ActionEdge.Left,
+                                  Behavior = ActionBehavior.HideBarOnClick
+                              };
             //logout.Image = Resources.user;
-            refresh.Type = ActionType.Context;
-            refresh.Edge = ActionEdge.Left;
-            refresh.Behavior = ActionBehavior.HideBarOnClick;
-            windowsUIView1.ContentContainerActions.Add(refresh);
-            var sacuvaj = new DelegateAction(OmoguciSacuvaj, Sacuvaj);
-            sacuvaj.Caption = "Sačuvaj";
+            
+            
+            var sacuvaj = new DelegateAction(OmoguciSacuvaj, Sacuvaj)
+                              {
+                                  Caption = "Sačuvaj",
+                                  Type = ActionType.Context,
+                                  Edge = ActionEdge.Left,
+                                  Behavior = ActionBehavior.HideBarOnClick,
+                              };
             //logout.Image = Resources.user;
-            sacuvaj.Type = ActionType.Context;
-            sacuvaj.Edge = ActionEdge.Left;
-            sacuvaj.Behavior = ActionBehavior.HideBarOnClick;
+            
             windowsUIView1.ContentContainerActions.Add(sacuvaj);
+            windowsUIView1.ContentContainerActions.Add(refresh);
+            windowsUIView1.ContentContainerActions.Add(novi);
         }
 
         private void NoviUnos()
@@ -87,6 +97,9 @@ namespace AbcPos.BackOffice.Win
             {
                 case "AbcPos.BackOffice.Win.Views.Artikli":
                     e.Control = new Artikli();
+                    break;
+                case "AbcPos.BackOffice.Win.Views.Dobavljaci":
+                    e.Control = new Dobavljaci();
                     break;
             }
             var view = e.Control as View;
